@@ -1,0 +1,25 @@
+body {
+  background-color: #f6f8fa;
+  font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+}
+
+.product-card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.product-card .card-img-top {
+  height: 200px;
+  object-fit: cover;
+  background: #eef0f2;
+}
+
+.detail-img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+}

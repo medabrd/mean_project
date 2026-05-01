@@ -1,0 +1,25 @@
+# dependencies
+**/node_modules/
+
+# build output
+**/dist/
+**/.angular/
+
+# env / secrets
+**/.env
+**/.env.local
+
+# uploads (keep folder, ignore contents)
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# logs
+*.log
+npm-debug.log*
+
+# editor / OS
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/

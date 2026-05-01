@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git submodule *)",
+      "Bash(npm install *)",
+      "Bash(node seed.js)",
+      "Bash(node app.js)",
+      "Bash(curl -s http://localhost:3000/api/products?limit=3)",
+      "Bash(npx -y -p @angular/cli@17 ng new frontend --routing --style=scss --skip-git --skip-tests --ssr=false --package-manager=npm --defaults)",
+      "Bash(curl -s http://localhost:3000/api/categories)",
+      "Bash(npx ng *)",
+      "Bash(curl -sI http://localhost:4200/)",
+      "Bash(curl -s \"http://localhost:3000/api/products?limit=3&sort=price_asc\")",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); [print\\(f\\\\\"  {p['name']} - \\\\${p['price']}\\\\\"\\) for p in d['items']]; print\\(f\\\\\"  total: {d['total']}\\\\\"\\)\")",
+      "Bash(curl -s \"http://localhost:3000/api/products?search=phone\")",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); [print\\(f\\\\\"  {p['name']}\\\\\"\\) for p in d['items']]\")",
+      "Bash(curl -s -o /dev/null -w \"  HTTP %{http_code}\\\\n\" http://localhost:3000/api/products/notanid)",
+      "Bash(curl -s -X POST http://localhost:3000/api/products -H \"Content-Type: application/json\" -d '{}')"
+    ]
+  }
+}

@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="mb-0">Products</h2>
+    <a routerLink="/products/new" class="btn btn-primary">+ New Product</a>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-body">
+      <div class="row g-2">
+        <div class="col-md-5">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search by name..."
+            [(ngModel)]="search"
+            (input)="fetch()"
+          />
+        </div>
+        <div class="col-md-3">
+          <select class="form-select" [(ngModel)]="selectedCategory" (change)="fetch()">
+            <option value="">All categories</option>
+            <option *ngFor="let c of categories" [value]="c._id">{{ c.name }}</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <select class="form-select" [(ngModel)]="sort" (change)="fetch()">
+            <option value="newest">Newest</option>
+            <option value="name">Name (A-Z)</option>
+            <option value="price_asc">Price (low to high)</option>
+            <option value="price_desc">Price (high to low)</option>
+          </select>
+        </div>
+        <div class="col-md-1">
+          <button class="btn btn-outline-secondary w-100" (click)="resetFilters()" title="Reset">
+            ×
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="text-center py-5">
+    <div class="spinner-border text-primary" role="status"></div>
+  </div>
+
+  <div *ngIf="!loading && products.length === 0" class="alert alert-info">
+    No products found.
+  </div>
+
+  <div class="row g-3" *ngIf="!loading">
+    <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let p of products">
+      <div class="card product-card h-100 shadow-sm">
+        <img [src]="imageUrl(p)" class="card-img-top" [alt]="p.name" />
+        <div class="card-body d-flex flex-column">
+          <span class="badge bg-secondary align-self-start mb-2">{{ catName(p) }}</span>
+          <h5 class="card-title">{{ p.name }}</h5>
+          <p class="card-text text-muted small flex-grow-1">{{ p.description }}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="fs-5 fw-bold text-primary">{{ p.price | currency:'USD' }}</span>
+            <small class="text-muted">Stock: {{ p.stock }}</small>
+          </div>
+        </div>
+        <div class="card-footer bg-white d-flex gap-2">
+          <a [routerLink]="['/products', p._id]" class="btn btn-sm btn-outline-primary flex-fill">View</a>
+          <a [routerLink]="['/products', p._id, 'edit']" class="btn btn-sm btn-outline-secondary flex-fill">Edit</a>
+          <button class="btn btn-sm btn-outline-danger" (click)="remove(p)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
